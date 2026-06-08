@@ -40,7 +40,7 @@ function Login() {
       JSON.stringify(res.data.user)
     );
 
-    alert("Login Successful");
+    //alert("Login Successful");
     if (res.data.user.role === "recruiter") {
     navigate("/recruiter");
     } else {

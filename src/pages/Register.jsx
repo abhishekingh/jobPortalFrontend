@@ -1,29 +1,26 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 function Register() {
 
-  const [form, setForm] =
-  useState({
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
     role: "jobseeker"
   });
 
-  const handleChange =
-  (e) => {
-
+  const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]:
-      e.target.value
+      [e.target.name]: e.target.value
     });
-
   };
 
-  const register =
-  async (e) => {
+  const register = async (e) => {
 
     e.preventDefault();
 
@@ -34,15 +31,22 @@ function Register() {
         form
       );
 
-      alert(
-        "Registration Successful"
-      );
+      alert("Registration Successful");
 
-    } catch {
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+        role: "jobseeker"
+      });
 
-      alert(
-        "Registration Failed"
-      );
+      navigate("/login");
+
+    } catch (err) {
+
+      console.log(err);
+
+      alert("Registration Failed");
 
     }
   };
@@ -58,29 +62,37 @@ function Register() {
         <h2>Create Account</h2>
 
         <input
+          type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Enter Name"
+          value={form.name}
           onChange={handleChange}
+          required
         />
 
         <input
+          type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Enter Email"
+          value={form.email}
           onChange={handleChange}
+          required
         />
 
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter Password"
+          value={form.password}
           onChange={handleChange}
+          required
         />
 
         <select
           name="role"
+          value={form.role}
           onChange={handleChange}
         >
-
           <option value="jobseeker">
             Job Seeker
           </option>
@@ -88,10 +100,9 @@ function Register() {
           <option value="recruiter">
             Recruiter
           </option>
-
         </select>
 
-        <button>
+        <button type="submit">
           Register
         </button>
 
