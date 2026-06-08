@@ -44,7 +44,7 @@ function Register() {
 
     } catch (err) {
 
-      console.log(err);
+      console.log(err.response.data.msg);
 
       alert("Registration Failed");
 
