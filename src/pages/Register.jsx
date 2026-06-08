@@ -44,9 +44,9 @@ function Register() {
 
     } catch (err) {
 
-      console.log(err.response.data.msg);
+      //console.log(err.response.data.msg);
 
-      alert("Registration Failed");
+      alert(err.response.data.msg);
 
     }
   };
