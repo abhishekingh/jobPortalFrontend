@@ -1,0 +1,26 @@
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 80px;
+background:#111827;
+}
+
+.logo{
+color:white;
+font-size:24px;
+font-weight:bold;
+}
+
+.nav-links a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+}
+
+.footer{
+background:#111827;
+color:white;
+padding:30px;
+text-align:center;
+}
